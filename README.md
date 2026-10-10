@@ -56,10 +56,11 @@ Four principles, applied in both modes:
 
 ## How the two modes relate
 
+```
 as-a-user (one principle: stand in the real user's position)
 ├── design → make choices for the user
 └── review → find friction for the user
-
+```
 
 Same logic, two outputs. Because the criteria are identical, design and review never contradict each other.
 
@@ -67,6 +68,7 @@ Same logic, two outputs. Because the criteria are identical, design and review n
 
 ## Structure
 
+```
 as-a-user/
 ├── SKILL.md # compact: model, principles, modes, index
 └── references/
@@ -74,7 +76,7 @@ as-a-user/
 ├── layout-and-hierarchy.md # grouping, ordering, boundaries, emphasis
 ├── forms.md # required fields, disclosure, errors, helper text
 └── feedback-and-interaction.md # action feedback, states, simplicity
-
+```
 
 `SKILL.md` stays short. Details load on demand from `references/`.
 
