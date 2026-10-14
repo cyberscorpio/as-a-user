@@ -1,52 +1,18 @@
 ---
 name: as-a-user
-description: Design and review UI from a real user's position. Use when generating or auditing interfaces — the same user-first logic applies to both. The bar is whether users can complete their goal, not whether features exist.
+description: 从实际用户目标设计或审查界面，适用于页面结构、表单、操作反馈和流程体验；不因纯文案或局部样式修改自动扩大为完整 UX 审查。
 ---
 
-# as-a-user
+# 从用户位置设计与审查
 
-Design and review UI as a real user would. Not as a system builder, not as a feature list.
+先确定用户、使用情境与要完成的目标，以能否正确完成任务判断界面。遵守所在项目规则，避免为审查或设计扩大功能范围。
 
-## The human model (why this works)
+设计时给出页面结构、主动作和本次会发生的加载/空/错误/成功状态，说明关键选择如何帮助用户。审查时走查主流程，报告可观察症状、用户影响、严重性和最小改进；只有静态代码时注明未验证的布局与交互，不把假设的用户感受当证据。只审查不自动修复。
 
-A real user **assumes, errs, and has no patience**. They receive information far slower than an LLM, remember poorly, and can only understand the system through what is visible on the page. Sometimes they form muscle memory.
+按问题读取：
+- [用户认知](references/mental-model.md)：上下文、术语与学习成本。
+- [布局与层级](references/layout-and-hierarchy.md)：分组、优先级、长内容与视口。
+- [表单](references/forms.md)：必填、渐进展示、校验与恢复。
+- [反馈与交互](references/feedback-and-interaction.md)：状态、键盘、焦点与读屏反馈。
 
-Design for that person — not for an idealized careful reader.
-
-Core traits to design against:
-- **Assumes** — fills gaps with guesses, often wrong.
-- **Errs** — misclicks, mistypes, misreads.
-- **Impatient** — won't read, won't hunt, won't wait.
-- **Slow intake** — needs hierarchy to know what matters first.
-- **Forgetful** — can't hold context across screens or steps.
-- **Blind to internals** — only sees what's rendered; never knows what happened behind the page.
-- **Muscle memory** — repeats familiar patterns; consistency beats cleverness.
-
-## Principles
-
-1. **Structure every page.** Group elements by content, order by importance, separate groups with clear boundaries, and use size/color so the eye catches the priority first.
-2. **Tame forms.** Highlight what's required or business-critical. Hide the rest behind "Advanced". Mark required fields (*). Give explicit, visible error messages — never vague, never off-screen. Label any non-obvious field with small helper text.
-3. **Always respond to action.** Buttons need pressed/released states. Any action that changes state must surface a visible result — the user cannot see behind the page.
-4. **Keep interaction simple.** Internal complexity is fine; the surface must be obvious. Design from first principles, not from implementation convenience.
-
-## Modes
-
-**`as-a-user · design`** — while generating UI. State who the user is, the context, and the goal; then produce structure, primary action, and states (default / loading / empty / error / success). Justify each key choice from the user's side.
-
-**`as-a-user · review`** — while auditing UI. Walk the main flow as a first-time user. Report friction as: symptom → user feeling → impact → fix. Rank by severity (blocker / major / minor / polish). Separate real problems from preferences.
-
-## References
-
-Load only what the task needs:
-- `references/mental-model.md` — the human traits, expanded, with design implications.
-- `references/layout-and-hierarchy.md` — grouping, ordering, boundaries, emphasis.
-- `references/forms.md` — required fields, progressive disclosure, errors, helper text.
-- `references/feedback-and-interaction.md` — action feedback, states, simplicity.
-
-## Anti-patterns
-
-- Treating "feature works" as "UI is good."
-- Assuming the user reads instructions.
-- Hiding errors where the user won't see them.
-- Clever layouts that break muscle memory.
-- Adding surface complexity to match internal complexity.
+保持必要业务上下文可见，使操作结果能被感知、错误能恢复；区分实际阻断与风格偏好。完成本次目标和相关验证即结束，不强制加载全部参考。
