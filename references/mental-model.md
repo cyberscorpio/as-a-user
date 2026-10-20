@@ -1,15 +1,25 @@
-# 用户认知与任务上下文
+# The human mental model
 
-用户的经验、注意力和设备不同；用真实角色与目标作设计依据，不把所有用户假设成不会读、没有耐心或记忆差的人。
+Design targets a person who **assumes, errs, and has no patience**.
 
-| 常见情境 | 设计影响 |
-| --- | --- |
-| 首次使用、术语陌生 | 说明关键字段和动作，减少靠猜测理解 |
-| 熟练操作、依赖习惯 | 保持布局、快捷键与状态语义一致 |
-| 中断后返回或跨页面处理 | 显示对象身份、已完成步骤和可继续动作 |
-| 误点、误填或网络失败 | 保留可恢复输入，防止重复提交，提供明确下一步 |
-| 只看得到界面 | 显示保存、同步、失败等结果及其实际完成边界 |
+## Traits and design implications
 
-专业流程可能需要解释；在决策发生处给出必要说明，而不是一律删除业务步骤或藏起上下文。不要暴露无助于用户决策的内部实现术语。
+| Trait | What it means | Design implication |
+|---|---|---|
+| Assumes | Fills missing info with guesses | Never rely on inference; make state and meaning explicit |
+| Errs | Misclicks, mistypes, misreads | Make errors easy to prevent, easy to recover |
+| Impatient | Won't read, hunt, or wait | Put the answer where the eye lands; no hidden paths |
+| Slow intake | Processes far slower than an LLM | Use hierarchy: size, color, spacing to signal priority |
+| Forgetful | Can't hold context across steps | Show context in place; don't make them remember |
+| Blind to internals | Only sees the rendered page | Surface every result and state change visibly |
+| Muscle memory | Repeats familiar patterns | Keep placement and behavior consistent |
 
-审查中的用户影响应由可观察行为支持，例如按钮不可达、错误在视口外或对象身份消失；没有用户研究时不声称所有用户都具有某种感受。
+## The visibility rule
+
+The user knows the system **only through what is on the page**.
+Anything happening behind it — saving, syncing, failing — is invisible unless you show it.
+
+## The patience rule
+
+Every moment spent thinking "what does this mean?", "where do I click?", "did it work?" is a defect.
+Good UI removes those moments; it does not explain them away.

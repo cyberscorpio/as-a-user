@@ -1,11 +1,33 @@
-# 操作反馈与可访问交互
+# Feedback and interaction
 
-状态改变应让用户知道进度、成功或失败及下一步。保存到本系统、对端同步和外部写回是不同完成边界，不能只用一个“成功”掩盖仍待处理的结果。
+The user cannot see behind the page. Every action must produce a visible result.
 
-按实际流程设计默认、加载、空、错误和成功状态，不要求不存在的状态。避免重复提交，长任务可以继续观察或安全离开；失败要有恢复路径。
+## Action feedback
 
-按钮与链接应有适当的 hover/active、禁用和键盘 focus-visible 状态。真实结果反馈比单纯按下动画更重要，不能只依赖鼠标效果。操作用 button、导航用链接；键盘能完成主流程，焦点不被浮层或固定元素遮挡。
+- Buttons need **pressed / released** states — the user must feel the click.
+- Any action that changes state (save, submit, delete, sync) must surface a visible result: success, failure, or progress.
+- Silence reads as "nothing happened" or "it broke."
 
-需要时使用 aria-live 传达异步结果，并保留可见信息。动画遵守 reduced-motion，不以动画代替状态说明。不可逆或高影响动作按实际风险使用确认或撤销，不给所有动作增加确认步骤。
+## States to design
 
-必要的专业步骤可以解释，但减少无助于任务的绕路。审查报告写可观察症状、影响与建议；未做浏览器走查时注明焦点、读屏和真实反馈尚未验证。
+- Default
+- Loading / in-progress
+- Empty
+- Error
+- Success
+
+If a state can occur, it must be designed — not left to chance.
+
+## Simplicity
+
+- Internal complexity is acceptable; **surface complexity is not**.
+- Present the shortest correct path. No detours, no unnecessary steps.
+- Design from first principles: what does the user actually need to accomplish here?
+- If a flow needs explanation, it's too complex.
+
+## Checks
+
+- Does every button show pressed/released?
+- Does every state-changing action show a result?
+- Can the user tell, at all times, what just happened and what's next?
+- Is there any step that exists for the system's convenience, not the user's?

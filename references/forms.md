@@ -1,15 +1,32 @@
-# 表单输入与错误恢复
+# Forms
 
-## 输入与渐进展示
+Forms are where users err most. Reduce load, prevent mistakes, surface errors.
 
-必填和重要业务条件要清楚，但不要求每个字段都加星号；使用可访问标签与项目一致标记，不能只依赖颜色或 placeholder。字段含义不明显时在输入处给出简短说明。
+## Required and important fields
 
-可折叠少用的可选配置，前提是不会隐藏关键业务字段、校验错误或正在生效的设置。根据用户角色和任务判断是否需要“高级”分组，不把所有非必填字段藏起来。
+- Mark required fields explicitly, e.g. `(*)`.
+- Visually emphasize fields that are required or business-critical.
+- Do not emphasize fields that are neither.
 
-## 校验与反馈
+## Progressive disclosure
 
-字段错误靠近输入，并通过描述关联到控件；提交后将焦点移到首个错误或提供可导航摘要，确保滚动到提交处时仍能找到失败原因。toast 可补充总体反馈，不能作为唯一的字段错误提示；向读屏用户传达必要状态。
+- Move unimportant or rarely used fields behind an "Advanced" toggle.
+- Default view shows only what most users need — cut mental load.
 
-用可理解语言说明失败原因和下一步。需要客服或审计定位时保留可复制错误编号，但编号不能代替解释。保留允许保留的输入，失败后能重试且不重复提交。
+## Error messages
 
-支持键盘、正常粘贴与合适的 autocomplete。控件禁用、加载和不可提交条件要有清晰原因；后端校验仍负责业务与权限约束，不能只靠客户端。
+- Be explicit. Vague errors leave users unable to act.
+- **Must be visible.** If the confirm button is at the bottom and the user scrolls there, a top-fixed error may be off-screen — use a toast or another mechanism that guarantees visibility at the moment of action.
+- Say what went wrong and how to fix it. No codes, no blame, no ambiguity.
+
+## Helper text
+
+- Any field whose meaning is not obvious gets small helper text below it.
+- Helper text explains meaning or the rule for filling it — not marketing copy.
+
+## Checks
+
+- Is every required field marked?
+- Can every error be seen at the moment it matters?
+- Does every non-obvious field have helper text?
+- Are unimportant fields hidden by default?

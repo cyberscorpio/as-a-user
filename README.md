@@ -1,25 +1,103 @@
 # as-a-user
 
-从用户目标设计和审查界面。判断标准是用户能否正确完成任务，设计与审查都依据实际角色、场景和可观察证据。
+**Design and review UI as a real user would.**
 
-## 使用
+`as-a-user` is a skill that makes AI think and judge interfaces like a real person — not like a system builder, and not like a feature list.
 
-- 设计：“使用 as-a-user 设计这个页面，说明用户目标、页面结构、主动作和实际会发生的状态。”
-- 审查：“使用 as-a-user 走查这个流程，报告可观察症状、影响、严重性和最小建议；标明没有实际验证的状态。”
+It shares **one logic** across two modes:
 
-设计中保留必要业务说明与上下文；审查中区分缺陷和风格偏好。用户经验不同，不假设所有人都不会阅读或缺乏耐心。只审查不自动修复，遵守所在项目的范围与规则。
+- **`as-a-user · design`** — while generating UI, make choices *for* the user.
+- **`as-a-user · review`** — while auditing UI, find friction *for* the user.
 
-## 结构
+The bar is always the same: **can users complete their goal?** — not whether the features exist.
 
-[SKILL.md](SKILL.md) 保留目标、模式与按需路由，细节分别维护在：
+---
 
-- [用户认知](references/mental-model.md)：角色、上下文与学习成本。
-- [布局与层级](references/layout-and-hierarchy.md)：分组、优先级与视口。
-- [表单](references/forms.md)：输入、渐进展示和错误恢复。
-- [反馈与交互](references/feedback-and-interaction.md)：操作状态、键盘、焦点与读屏。
+## Why
 
-仅读取本次问题需要的参考；源码推断与真实浏览器走查分别说明。普通局部修改不自动扩展为完整 UX 审查。
+AI writes UI that works but doesn't feel good to use. Features are all there; the experience isn't.
 
-## 许可
+The reason is simple: AI reasons like a machine, not like a person. A real user:
 
-MIT，见 [LICENSE](LICENSE)。
+- **assumes** — fills gaps with guesses, often wrong
+- **errs** — misclicks, mistypes, misreads
+- **has no patience** — won't read, won't hunt, won't wait
+- **takes in information slowly** — needs hierarchy to know what matters first
+- **forgets** — can't hold context across screens or steps
+- **is blind to internals** — only sees what's rendered, never what happens behind the page
+- **forms muscle memory** — repeats familiar patterns; consistency beats cleverness
+
+`as-a-user` encodes that model so AI designs and audits against it.
+
+---
+
+## What it does
+
+Four principles, applied in both modes:
+
+1. **Structure every page.** Group by content, order by importance, separate groups clearly, use size and color so the eye catches priority first.
+2. **Tame forms.** Mark required fields (*), hide the rest behind "Advanced", give explicit and visible errors, add helper text to any non-obvious field.
+3. **Always respond to action.** Buttons need pressed/released states; any state change must surface a visible result.
+4. **Keep interaction simple.** Internal complexity is fine; the surface must be obvious. Design from first principles.
+
+---
+
+## Usage
+
+### Design mode
+
+> Design this screen with `as-a-user`. First state who the user is, the context, and their goal. Then give the structure, the primary action, and the key states (default / loading / empty / error / success). Justify each key choice from the user's side.
+
+### Review mode
+
+> Review this UI with `as-a-user`. Walk the main flow as a first-time user. Point out where I'd be confused, stuck, or unsure whether it worked. Report each issue as symptom → user feeling → impact → fix, ranked by severity.
+
+---
+
+## How the two modes relate
+
+```
+as-a-user (one principle: stand in the real user's position)
+├── design → make choices for the user
+└── review → find friction for the user
+```
+
+Same logic, two outputs. Because the criteria are identical, design and review never contradict each other.
+
+---
+
+## Structure
+
+```
+as-a-user/
+├── SKILL.md # compact: model, principles, modes, index
+└── references/
+├── mental-model.md # the human traits, expanded
+├── layout-and-hierarchy.md # grouping, ordering, boundaries, emphasis
+├── forms.md # required fields, disclosure, errors, helper text
+└── feedback-and-interaction.md # action feedback, states, simplicity
+```
+
+`SKILL.md` stays short. Details load on demand from `references/`.
+
+---
+
+## Anti-patterns
+
+- Treating "the feature works" as "the UI is good."
+- Assuming the user reads instructions.
+- Hiding errors where the user won't see them.
+- Clever layouts that break muscle memory.
+- Matching surface complexity to internal complexity.
+
+---
+
+## Background
+
+`as-a-user` follows the spirit of **human-centered design** — but as a lightweight, callable perspective rather than a full methodology. It's the "stand in the user's shoes" layer, made available at both generation time and review time.
+
+---
+
+## License
+
+MIT

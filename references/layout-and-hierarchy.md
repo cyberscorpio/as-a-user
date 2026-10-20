@@ -1,7 +1,23 @@
-# 布局与信息层级
+# Layout and hierarchy
 
-按业务关系分组，让用户能识别页面用途、当前对象和主动作。以间距、标题、大小与对比表达层级，不要求每组都有卡片，也不只靠颜色区分状态。
+Every element earns its place and its position.
 
-优先级与阅读顺序匹配用户任务；遵守语言方向和项目组件约定。长文本、表格、空值和不同视口不能遮住必要字段或操作，不能用截断和隐藏溢出来掩盖布局错误。
+## Steps
 
-审查时区分源码推断与实际渲染证据。按本次风险检查相关桌面/移动视口、长内容、缩放、焦点可见性及 sticky 元素遮挡；只修改局部样式时不自动改造全页结构。
+1. **Group by content.** Before placing anything, ask what belongs together semantically. Related things sit together.
+2. **Order by importance.** Within and across groups, the most important comes first — top and left in LTR reading order.
+3. **Separate groups.** Different groups/regions need visible boundaries — space, divider, card, or background. No ambiguous edges.
+4. **Emphasize with size and color.** The eye should catch the priority in the first glance. Use type scale and color to rank, not decoration.
+
+## Checks
+
+- Can a first-time user tell what the page is for in one glance?
+- Is the primary action visually dominant?
+- Are groups distinguishable without reading labels?
+- Does anything sit in a position that implies wrong importance?
+
+## Anti-patterns
+
+- Everything the same size, weight, and color.
+- Groups separated only by a thin, easily missed gap.
+- Decorative emphasis that competes with functional emphasis.
