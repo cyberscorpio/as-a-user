@@ -1,6 +1,6 @@
 ---
 name: as-a-user
-description: Design and review user interfaces by connecting human attention, memory, expectations, mistakes, and control needs to concrete design decisions. Use when creating UI or evaluating usability and task flows.
+description: Design, review, and verify user interfaces through human characteristics and task goals. Use when creating UI, evaluating usability, or exercising software through a browser or computer use to verify task completion and interaction quality.
 ---
 
 # as-a-user
@@ -36,6 +36,8 @@ Example: interrupted order entry → limited working memory → returning to the
 - Rank severity by task obstruction, error consequences, affected scope, and recovery difficulty: blocker / major / minor / polish. State evidence confidence separately; distinguish preferences from problems.
 - Summarize coverage and material unknowns. Heuristic review does not replace testing with real users.
 
+**`as-a-user · verify`** — Read [Verification](references/verification.md). Actually exercise each in-scope feature as a user task through the interface, then check the final outcome against explicit expectations. Report functional results separately from human-centered usability findings, with evidence and coverage gaps. Use the current model for planning and acceptance; delegate bounded execution to a qualified lower-cost model only when supported, without weakening evidence or acceptance standards.
+
 ## References
 
 Load only what the task needs:
@@ -44,3 +46,4 @@ Load only what the task needs:
 - [Layout and hierarchy](references/layout-and-hierarchy.md) — attention, grouping, orientation, and expertise.
 - [Forms](references/forms.md) — field visibility, instructions, errors, and preserving effort.
 - [Feedback and interaction](references/feedback-and-interaction.md) — truthful status, control, and recovery.
+- [Verification](references/verification.md) — real operation, task closure, evidence, and model cost allocation.
