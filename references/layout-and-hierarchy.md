@@ -1,23 +1,15 @@
 # Layout and hierarchy
 
-Every element earns its place and its position.
+Allocate attention according to the user's task and the cost of overlooking information.
 
-## Steps
+## From human characteristics to layout
 
-1. **Group by content.** Before placing anything, ask what belongs together semantically. Related things sit together.
-2. **Order by importance.** Within and across groups, the most important comes first — top and left in LTR reading order.
-3. **Separate groups.** Different groups/regions need visible boundaries — space, divider, card, or background. No ambiguous edges.
-4. **Emphasize with size and color.** The eye should catch the priority in the first glance. Use type scale and color to rank, not decoration.
+- **Limited attention:** group information by task and meaning; use spacing, headings, and selective emphasis to show relationships. Add boundaries where they clarify groups, without making every group a card.
+- **Limited working memory:** place information needed for comparison or decisions together. Keep object identity and relevant prior choices available across steps.
+- **Learned expectations:** use familiar terminology, placement, and behavior. Respect reading direction and keep visual, semantic, and keyboard order coherent.
+- **Different experience levels:** balance discovery with efficient repeated use. A dense working view may suit experts; a staged view may help unfamiliar users. Choose from the workflow, not a blanket preference for density or emptiness.
+- **Varied perception:** combine text and structure with visual emphasis. Do not communicate meaning only through color; preserve readable content and usable controls when zoomed or on smaller screens.
 
-## Checks
+## Verify the response
 
-- Can a first-time user tell what the page is for in one glance?
-- Is the primary action visually dominant?
-- Are groups distinguishable without reading labels?
-- Does anything sit in a position that implies wrong importance?
-
-## Anti-patterns
-
-- Everything the same size, weight, and color.
-- Groups separated only by a thin, easily missed gap.
-- Decorative emphasis that competes with functional emphasis.
+For the selected task, can the person identify the current object, find the information needed for a decision, and reach the appropriate action? Check whether emphasis reflects task priority and whether returning after an interruption restores orientation. Distinguish screenshot observations from keyboard or responsive behavior that requires interaction.

@@ -1,52 +1,46 @@
 ---
 name: as-a-user
-description: Design and review UI from a real user's position. Use when generating or auditing interfaces — the same user-first logic applies to both. The bar is whether users can complete their goal, not whether features exist.
+description: Design and review user interfaces by connecting human attention, memory, expectations, mistakes, and control needs to concrete design decisions. Use when creating UI or evaluating usability and task flows.
 ---
 
 # as-a-user
 
-Design and review UI as a real user would. Not as a system builder, not as a feature list.
+Help people complete their goals with an interface they can understand, operate, and recover from. Ground decisions in the user's task and circumstances.
 
-## The human model (why this works)
+## Human model
 
-A real user **assumes, errs, and has no patience**. They receive information far slower than an LLM, remember poorly, and can only understand the system through what is visible on the page. Sometimes they form muscle memory.
+People have limited attention and working memory, use experience to form expectations, and can make slips or misunderstand rules. They also learn, develop expertise, and need control over consequential choices. Abilities, motivation, devices, and interruptions vary by situation; do not assume a universally impatient or inexperienced user.
 
-Design for that person — not for an idealized careful reader.
+## Shared reasoning chain
 
-Core traits to design against:
-- **Assumes** — fills gaps with guesses, often wrong.
-- **Errs** — misclicks, mistypes, misreads.
-- **Impatient** — won't read, won't hunt, won't wait.
-- **Slow intake** — needs hierarchy to know what matters first.
-- **Forgetful** — can't hold context across screens or steps.
-- **Blind to internals** — only sees what's rendered; never knows what happened behind the page.
-- **Muscle memory** — repeats familiar patterns; consistency beats cleverness.
+**User and context → task → relevant human characteristic → likely difficulty → design response → verification.**
 
-## Principles
+Use this chain for consequential choices and findings, not for every element:
 
-1. **Structure every page.** Group elements by content, order by importance, separate groups with clear boundaries, and use size/color so the eye catches the priority first.
-2. **Tame forms.** Highlight what's required or business-critical. Hide the rest behind "Advanced". Mark required fields (*). Give explicit, visible error messages — never vague, never off-screen. Label any non-obvious field with small helper text.
-3. **Always respond to action.** Buttons need pressed/released states. Any action that changes state must surface a visible result — the user cannot see behind the page.
-4. **Keep interaction simple.** Internal complexity is fine; the surface must be obvious. Design from first principles, not from implementation convenience.
+1. Establish the goal, experience level, and relevant conditions from available evidence. State material assumptions; ask only when missing context would change the decision.
+2. Select the human characteristics that matter here. Explain how they affect this task before choosing a UI pattern.
+3. Choose a response that reduces total effort and error cost, including understanding, action, and recovery. Preserve information, learning, and deliberation the task needs; fewer fields or clicks are not goals by themselves.
+4. Specify an observable way to check whether the response helps. Distinguish a proposed check from one actually performed.
+
+Example: interrupted order entry → limited working memory → returning to the wrong order → retain the draft and keep order identity in context → check that someone can resume the correct order without re-entering data.
 
 ## Modes
 
-**`as-a-user · design`** — while generating UI. State who the user is, the context, and the goal; then produce structure, primary action, and states (default / loading / empty / error / success). Justify each key choice from the user's side.
+**`as-a-user · design`** — Use the chain to produce the requested design: structure, actions, and task-relevant states and recovery paths. Briefly explain key choices and tradeoffs. Make information perceivable and controls operable across relevant input methods and assistive technology; do not rely on color alone.
 
-**`as-a-user · review`** — while auditing UI. Walk the main flow as a first-time user. Report friction as: symptom → user feeling → impact → fix. Rank by severity (blocker / major / minor / polish). Separate real problems from preferences.
+**`as-a-user · review`** — Walk relevant tasks using the available interface or artifacts. Select scenarios that matter: first use, practiced use, interruption, or failure recovery. Report actionable findings as:
+
+**Scenario/location and evidence → relevant human characteristic and likely impact → fix → verification.**
+
+- Separate observed facts, inferences, and untested assumptions. Do not present imagined feelings as user research. Screenshots support static observations, not claims about runtime behavior.
+- Rank severity by task obstruction, error consequences, affected scope, and recovery difficulty: blocker / major / minor / polish. State evidence confidence separately; distinguish preferences from problems.
+- Summarize coverage and material unknowns. Heuristic review does not replace testing with real users.
 
 ## References
 
 Load only what the task needs:
-- `references/mental-model.md` — the human traits, expanded, with design implications.
-- `references/layout-and-hierarchy.md` — grouping, ordering, boundaries, emphasis.
-- `references/forms.md` — required fields, progressive disclosure, errors, helper text.
-- `references/feedback-and-interaction.md` — action feedback, states, simplicity.
 
-## Anti-patterns
-
-- Treating "feature works" as "UI is good."
-- Assuming the user reads instructions.
-- Hiding errors where the user won't see them.
-- Clever layouts that break muscle memory.
-- Adding surface complexity to match internal complexity.
+- [Human model](references/mental-model.md) — selecting relevant characteristics and applying the chain.
+- [Layout and hierarchy](references/layout-and-hierarchy.md) — attention, grouping, orientation, and expertise.
+- [Forms](references/forms.md) — field visibility, instructions, errors, and preserving effort.
+- [Feedback and interaction](references/feedback-and-interaction.md) — truthful status, control, and recovery.

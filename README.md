@@ -1,102 +1,41 @@
 # as-a-user
 
-**Design and review UI as a real user would.**
+**Design and review UI by connecting human characteristics to concrete decisions.**
 
-`as-a-user` is a skill that makes AI think and judge interfaces like a real person — not like a system builder, and not like a feature list.
+People bring goals, experience, abilities, and expectations to an interface. Their attention and working memory are limited; they can be interrupted, make mistakes, learn, and develop expertise. `as-a-user` helps an agent reason from those characteristics in a specific task, without assuming every user has the same needs.
 
-It shares **one logic** across two modes:
+## One reasoning chain, two modes
 
-- **`as-a-user · design`** — while generating UI, make choices *for* the user.
-- **`as-a-user · review`** — while auditing UI, find friction *for* the user.
+**User and context → task → relevant human characteristic → likely difficulty → design response → verification.**
 
-The bar is always the same: **can users complete their goal?** — not whether the features exist.
+- **`as-a-user · design`** uses the chain to choose structure, actions, and relevant states and recovery paths.
+- **`as-a-user · review`** uses it to connect observed interface behavior to likely task difficulties and actionable improvements.
 
----
+For example, someone interrupted during order entry may lose track of the current order. Retaining their draft and keeping order identity in context supports resumption. Verify whether they can continue the correct order without re-entering data.
 
-## Why
-
-AI writes UI that works but doesn't feel good to use. Features are all there; the experience isn't.
-
-The reason is simple: AI reasons like a machine, not like a person. A real user:
-
-- **assumes** — fills gaps with guesses, often wrong
-- **errs** — misclicks, mistypes, misreads
-- **has no patience** — won't read, won't hunt, won't wait
-- **takes in information slowly** — needs hierarchy to know what matters first
-- **forgets** — can't hold context across screens or steps
-- **is blind to internals** — only sees what's rendered, never what happens behind the page
-- **forms muscle memory** — repeats familiar patterns; consistency beats cleverness
-
-`as-a-user` encodes that model so AI designs and audits against it.
-
----
-
-## What it does
-
-Four principles, applied in both modes:
-
-1. **Structure every page.** Group by content, order by importance, separate groups clearly, use size and color so the eye catches priority first.
-2. **Tame forms.** Mark required fields (*), hide the rest behind "Advanced", give explicit and visible errors, add helper text to any non-obvious field.
-3. **Always respond to action.** Buttons need pressed/released states; any state change must surface a visible result.
-4. **Keep interaction simple.** Internal complexity is fine; the surface must be obvious. Design from first principles.
-
----
+The aim is successful task completion with reasonable understanding, effort, and recovery cost. Fewer fields or clicks are useful only when they serve that goal. Necessary information, learning, and deliberate choices remain part of good design.
 
 ## Usage
 
-### Design mode
+### Design
 
-> Design this screen with `as-a-user`. First state who the user is, the context, and their goal. Then give the structure, the primary action, and the key states (default / loading / empty / error / success). Justify each key choice from the user's side.
+> Use `as-a-user` to design this screen. Establish the user, task, and context; state material assumptions. Connect key choices to relevant human characteristics, include the states and recovery paths this task needs, and explain how to verify the choices.
 
-### Review mode
+### Review
 
-> Review this UI with `as-a-user`. Walk the main flow as a first-time user. Point out where I'd be confused, stuck, or unsure whether it worked. Report each issue as symptom → user feeling → impact → fix, ranked by severity.
+> Use `as-a-user` to review this flow. Select relevant usage and recovery scenarios. For each actionable finding, give the location and evidence, human characteristic and likely impact, fix, and verification. Rank severity separately from evidence confidence and report material coverage gaps.
 
----
+Review distinguishes observation, inference, and untested assumptions. A screenshot cannot establish runtime behavior, and an agent's prediction of a feeling is not user research. Heuristic review supports, but does not replace, testing with real users.
 
-## How the two modes relate
+## Contents
 
-```
-as-a-user (one principle: stand in the real user's position)
-├── design → make choices for the user
-└── review → find friction for the user
-```
+- [SKILL.md](SKILL.md) — purpose, shared reasoning chain, and mode instructions.
+- [Human model](references/mental-model.md) — contextual characteristics and contrasting examples.
+- [Layout and hierarchy](references/layout-and-hierarchy.md) — attention, orientation, and experience.
+- [Forms](references/forms.md) — visibility, input guidance, and error correction.
+- [Feedback and interaction](references/feedback-and-interaction.md) — truthful status, control, and recovery.
 
-Same logic, two outputs. Because the criteria are identical, design and review never contradict each other.
-
----
-
-## Structure
-
-```
-as-a-user/
-├── SKILL.md # compact: model, principles, modes, index
-└── references/
-├── mental-model.md # the human traits, expanded
-├── layout-and-hierarchy.md # grouping, ordering, boundaries, emphasis
-├── forms.md # required fields, disclosure, errors, helper text
-└── feedback-and-interaction.md # action feedback, states, simplicity
-```
-
-`SKILL.md` stays short. Details load on demand from `references/`.
-
----
-
-## Anti-patterns
-
-- Treating "the feature works" as "the UI is good."
-- Assuming the user reads instructions.
-- Hiding errors where the user won't see them.
-- Clever layouts that break muscle memory.
-- Matching surface complexity to internal complexity.
-
----
-
-## Background
-
-`as-a-user` follows the spirit of **human-centered design** — but as a lightweight, callable perspective rather than a full methodology. It's the "stand in the user's shoes" layer, made available at both generation time and review time.
-
----
+References load only when relevant. The skill is a lightweight human-centered design perspective, not a full research methodology or accessibility audit.
 
 ## License
 

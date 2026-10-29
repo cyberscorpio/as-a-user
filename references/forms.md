@@ -1,32 +1,25 @@
 # Forms
 
-Forms are where users err most. Reduce load, prevent mistakes, surface errors.
+Connect field and validation choices to the task, likely misunderstandings, and the effort already invested.
 
-## Required and important fields
+## Deciding what to show
 
-- Mark required fields explicitly, e.g. `(*)`.
-- Visually emphasize fields that are required or business-critical.
-- Do not emphasize fields that are neither.
+- Use task relevance, frequency, and consequences of omission to decide visibility. Optional does not mean unimportant; required does not automatically mean visually dominant.
+- Fold away rarely needed detail only when people can discover it and understand whether it applies. Keep consequential choices and active errors discoverable.
+- Make required status clear through a consistent convention and accessible semantics. Explain symbols if used.
 
-## Progressive disclosure
+## Supporting correct input
 
-- Move unimportant or rarely used fields behind an "Advanced" toggle.
-- Default view shows only what most users need — cut mental load.
+- Use familiar labels and place rules or examples where they inform entry. Improve an unclear label before adding more helper text.
+- Distinguish typing slips from misunderstanding: a format hint may fix the former, while the latter needs an explanation of meaning or consequences.
+- Choose validation timing that helps correction without interrupting unfinished input. Explain any automatic correction that changes meaning.
 
-## Error messages
+## Recovering from errors
 
-- Be explicit. Vague errors leave users unable to act.
-- **Must be visible.** If the confirm button is at the bottom and the user scrolls there, a top-fixed error may be off-screen — use a toast or another mechanism that guarantees visibility at the moment of action.
-- Say what went wrong and how to fix it. No codes, no blame, no ambiguity.
+- Identify what failed, associate the explanation with the field, and give an actionable correction when known. Technical codes may supplement, but cannot replace, that explanation.
+- Keep errors available while correcting them. Use inline messages, a navigable summary, and appropriate focus management for the form; a transient toast alone does not ensure discovery or recovery.
+- Make errors perceivable to assistive technology and avoid color-only signals. Preserve valid input and explain any information that cannot be retained.
 
-## Helper text
+## Verify the response
 
-- Any field whose meaning is not obvious gets small helper text below it.
-- Helper text explains meaning or the rule for filling it — not marketing copy.
-
-## Checks
-
-- Is every required field marked?
-- Can every error be seen at the moment it matters?
-- Does every non-obvious field have helper text?
-- Are unimportant fields hidden by default?
+Try a relevant omission or invalid value: can the person locate and understand the problem, correct it using their input method, and continue without repeating completed work? Check folded fields in both the common task and the task that needs them.

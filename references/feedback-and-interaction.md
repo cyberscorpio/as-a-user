@@ -1,33 +1,21 @@
 # Feedback and interaction
 
-The user cannot see behind the page. Every action must produce a visible result.
+People need to know whether an action registered, what actually happened, and what they can do next.
 
-## Action feedback
+## Truthful, perceivable feedback
 
-- Buttons need **pressed / released** states — the user must feel the click.
-- Any action that changes state (save, submit, delete, sync) must surface a visible result: success, failure, or progress.
-- Silence reads as "nothing happened" or "it broke."
+- Provide appropriate activation, focus, and progress feedback. A pressed button alone does not establish that the task succeeded.
+- Distinguish accepted, processing, completed, failed, and unknown outcomes when they change the next decision. Never claim completion from acknowledgement alone.
+- Make important status changes available to assistive technology. Match prominence and persistence to consequence; routine updates need not interrupt with a dialog or toast.
+- Select states from the actual flow, including empty, unavailable, partial, or interrupted states when relevant. Avoid filling a generic state checklist without explaining the user's next action.
 
-## States to design
+## Control and recovery
 
-- Default
-- Loading / in-progress
-- Empty
-- Error
-- Success
+- Preserve input and context through recoverable failures or interruptions. Make any loss and the recovery path clear.
+- Offer correction, cancellation, undo, or retry where supported, with honest limits. For unknown outcomes, help establish status before inviting another submission that could duplicate the action.
+- Match protection to error cost and reversibility. Use review, validation, or undo where appropriate; do not add confirmation to every routine action.
+- Explain consequential choices at the decision point. Keep necessary deliberation while removing steps that do not help the person complete the task.
 
-If a state can occur, it must be designed — not left to chance.
+## Verify the response
 
-## Simplicity
-
-- Internal complexity is acceptable; **surface complexity is not**.
-- Present the shortest correct path. No detours, no unnecessary steps.
-- Design from first principles: what does the user actually need to accomplish here?
-- If a flow needs explanation, it's too complex.
-
-## Checks
-
-- Does every button show pressed/released?
-- Does every state-changing action show a result?
-- Can the user tell, at all times, what just happened and what's next?
-- Is there any step that exists for the system's convenience, not the user's?
+Use a relevant delay, failure, or interruption: can the person distinguish pending from complete, understand what was retained, and take a valid next step without unintended duplication or loss? Record which behaviors were exercised and which remain assumptions.
